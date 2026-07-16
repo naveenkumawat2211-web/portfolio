@@ -74,12 +74,18 @@ function About() {
             Education
           </h2>
 
-          <p className="text-gray-600 leading-8">
-            🎓 Bachelor of Computer Applications (BCA)
+          <p>
+            🎓 Bachelor of Computer Applications <span className="text-red-600">
+                  (BCA)
+                </span>
             <br />
-            Tagore PG college , Gudha Gorji
+            Tagore PG College, Gudha Gorji
             <br />
-            2022 - Present
+           Graduated in <span className="text-red-600">
+                  (2025)
+                </span>
+            <br />
+            
           </p>
         </motion.div>
 
