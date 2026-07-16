@@ -45,7 +45,7 @@ function Home() {
     <>
       <section
         id="home"
-        className="min-h-screen max-w-screen-2xl mt-8 mx-auto px-6 md:px-20 flex items-center"
+        className="min-h-screen max-w-screen-2xl md:mt-8 mx-auto px-6 md:px-20 flex items-center"
       >
         <div className="grid md:grid-cols-2  gap-16 items-center">
 
