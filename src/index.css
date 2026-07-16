@@ -3,6 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+
+html, body {
+  overflow-x: hidden;
   font-family: "Poppins", sans-serif;
+}
+
+#root {
+  overflow-x: hidden;
 }

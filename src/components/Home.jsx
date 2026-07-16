@@ -45,9 +45,9 @@ function Home() {
     <>
       <section
         id="home"
-        className="min-h-screen max-w-screen-2xl mx-auto px-6 md:px-20 flex items-center"
+        className="min-h-screen max-w-screen-2xl mt-8 mx-auto px-6 md:px-20 flex items-center"
       >
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+        <div className="grid md:grid-cols-2  gap-16 items-center">
 
           {/* Left Side */}
 
@@ -56,7 +56,7 @@ function Home() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
           >
-            <span className="bg-red-100 text-red-600 px-4 py-2 rounded-full font-semibold">
+            <span className="bg-red-100 text-red-600  px-4 py-2 rounded-full font-semibold">
               👋 Welcome To My Portfolio
             </span>
 
@@ -71,7 +71,7 @@ function Home() {
               <ReactTyped
                 strings={[
                   "Full Stack Developer",
-                  "MERN Developer",
+                  "MERN Stack Developer",
                   "React Developer",
                   "Programmer",
                 ]}

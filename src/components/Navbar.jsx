@@ -16,7 +16,9 @@ function Navbar() {
 
     window.addEventListener("scroll", changeNavbar);
 
-    return () => window.removeEventListener("scroll", changeNavbar);
+    return () => {
+      window.removeEventListener("scroll", changeNavbar);
+    };
   }, []);
 
   const navItems = [
@@ -28,128 +30,126 @@ function Navbar() {
   ];
 
   return (
-    <>
-      <motion.nav
-        initial={{ y: -80 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6 }}
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-          scroll
-            ? "bg-white/80 backdrop-blur-lg shadow-xl"
-            : "bg-transparent"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-6 md:px-16 h-20 flex justify-between items-center">
+    <motion.nav
+      initial={{ y: -80 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+      className={`fixed top-0 left-0 w-full z-[9999] transition-all duration-300 ${
+        scroll
+          ? "bg-white/90 backdrop-blur-md shadow-lg"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto h-16 lg:h-20 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
 
-          {/* Logo */}
+        {/* Logo */}
 
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex items-center gap-3 cursor-pointer"
-          >
-            <img
-              src={pic}
-              alt=""
-              className="w-14 h-14 rounded-full border-2 border-red-500 object-cover"
-            />
+        <motion.div
+          whileHover={{ scale: 1.03 }}
+          className="flex items-center gap-3 cursor-pointer"
+        >
+          <img
+            src={pic}
+            alt="Naveen Kumawat"
+            className="w-11 h-11 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full border-2 border-red-500 object-cover"
+          />
 
-            <div>
-              <h1 className="text-xl font-bold">
-                Naveen{" "}
-                <span className="text-red-600">
-                  Kumawat
-                </span>
-              </h1>
+          <div className="leading-tight">
+            <h1 className="text-base sm:text-lg lg:text-xl font-bold">
+              Naveen{" "}
+              <span className="text-red-600">
+                Kumawat
+              </span>
+            </h1>
 
-              <p className="text-sm text-gray-500">
-                MERN Stack Developer
-              </p>
-            </div>
-          </motion.div>
+            <p className="hidden sm:block text-xs text-gray-500">
+              MERN Stack Developer
+            </p>
+          </div>
+        </motion.div>
 
-          {/* Desktop Menu */}
+        {/* Desktop Menu */}
 
-          <ul className="hidden md:flex items-center gap-10">
+        <ul className="hidden lg:flex items-center gap-8">
 
-            {navItems.map((item, index) => (
-              <motion.li
-                key={index}
-                whileHover={{ y: -3 }}
-                className="relative cursor-pointer font-semibold group"
-              >
-                <Link
-                  to={item}
-                  smooth
-                  spy
-                  offset={-70}
-                  duration={500}
-                  activeClass="text-red-600"
-                >
-                  {item}
-                </Link>
-
-                <span className="absolute left-0 -bottom-1 h-[3px] w-0 bg-red-600 transition-all duration-300 group-hover:w-full"></span>
-              </motion.li>
-            ))}
-
-          </ul>
-
-          {/* Mobile Button */}
-
-          <motion.div
-            whileTap={{ scale: 0.9 }}
-            className="md:hidden cursor-pointer"
-            onClick={() => setMenu(!menu)}
-          >
-            {menu ? (
-              <IoCloseSharp size={28} />
-            ) : (
-              <AiOutlineMenu size={28} />
-            )}
-          </motion.div>
-        </div>
-
-        {/* Mobile Menu */}
-
-        <AnimatePresence>
-          {menu && (
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ duration: 0.4 }}
-              className="fixed top-20 right-0 w-full h-screen bg-white flex justify-center items-center md:hidden"
+          {navItems.map((item, index) => (
+            <motion.li
+              key={index}
+              whileHover={{ y: -2 }}
+              className="relative font-semibold cursor-pointer group"
             >
-              <ul className="space-y-10 text-3xl font-bold">
+              <Link
+                to={item}
+                smooth
+                spy
+                offset={-70}
+                duration={500}
+                activeClass="text-red-600"
+              >
+                {item}
+              </Link>
 
-                {navItems.map((item, index) => (
-                  <motion.li
-                    key={index}
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      delay: index * 0.1,
-                    }}
+              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-red-600 transition-all duration-300 group-hover:w-full"></span>
+            </motion.li>
+          ))}
+
+        </ul>
+
+        {/* Mobile Button */}
+
+        <motion.button
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setMenu(!menu)}
+          className="lg:hidden text-2xl"
+        >
+          {menu ? <IoCloseSharp /> : <AiOutlineMenu />}
+        </motion.button>
+
+      </div>
+
+            {/* Mobile Menu */}
+
+      <AnimatePresence>
+        {menu && (
+          <motion.div
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.3 }}
+            className="lg:hidden fixed top-16 left-0 w-full h-[calc(100vh-64px)] bg-white z-[9998] overflow-y-auto shadow-xl"
+          >
+            <ul className="flex flex-col items-center py-8">
+
+              {navItems.map((item, index) => (
+                <motion.li
+                  key={index}
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{
+                    delay: index * 0.08,
+                  }}
+                  className="w-full"
+                >
+                  <Link
+                    to={item}
+                    smooth
+                    spy
+                    duration={500}
+                    offset={-70}
+                    onClick={() => setMenu(false)}
+                    activeClass="text-red-600"
+                    className="block w-full text-center py-4 text-lg font-semibold border-b border-gray-200 hover:bg-red-50 hover:text-red-600 transition-all duration-300"
                   >
-                    <Link
-                      onClick={() => setMenu(false)}
-                      to={item}
-                      smooth
-                      duration={500}
-                      offset={-70}
-                      className="cursor-pointer hover:text-red-600 duration-300"
-                    >
-                      {item}
-                    </Link>
-                  </motion.li>
-                ))}
+                    {item}
+                  </Link>
+                </motion.li>
+              ))}
 
-              </ul>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.nav>
-    </>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 }
 
