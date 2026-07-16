@@ -77,9 +77,9 @@ function About() {
           <p className="text-gray-600 leading-8">
             🎓 Bachelor of Computer Applications (BCA)
             <br />
-            Rajasthan University
+            Tagore PG college , Gudha Gorji
             <br />
-            2023 - Present
+            2022 - Present
           </p>
         </motion.div>
 

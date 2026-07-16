@@ -90,7 +90,7 @@ function Contact() {
               <div>
                 <p className="font-semibold">Email</p>
                 <p className="text-gray-500">
-                  your@email.com
+                 naveenkumawat2211@gmail.com
                 </p>
               </div>
             </div>
@@ -103,7 +103,7 @@ function Contact() {
               <div>
                 <p className="font-semibold">Phone</p>
                 <p className="text-gray-500">
-                  +91 9876543210
+                  +91 7597386371
                 </p>
               </div>
             </div>
