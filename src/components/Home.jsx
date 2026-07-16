@@ -44,141 +44,151 @@ function Home() {
   return (
     <>
       <section
-        id="home"
-        className="min-h-screen max-w-screen-2xl md:mt-8 mx-auto px-6 md:px-20 flex items-center"
-      >
-        <div className="grid md:grid-cols-2  gap-16 items-center">
+  id="Home"
+  className="min-h-screen pt-20 lg:pt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-20 overflow-x-hidden flex items-center"
+>
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
 
-          {/* Left Side */}
+    {/* Left Side */}
 
-          <motion.div
-            initial={{ opacity: 0, x: -80 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-          >
-            <span className="bg-red-100 text-red-600  px-4 py-2 rounded-full font-semibold">
-              👋 Welcome To My Portfolio
-            </span>
+    <motion.div
+      initial={{ opacity: 0, x: -80 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 1 }}
+      className="order-2 lg:order-1"
+    >
+      <span className="inline-block bg-red-100 text-red-600 px-4 py-2 rounded-full text-sm sm:text-base font-semibold">
+        👋 Welcome To My Portfolio
+      </span>
 
-            <h1 className="text-4xl md:text-6xl font-bold mt-6">
-              Hi, I'm
-              <span className="text-red-600"> Developer</span>
-            </h1>
+      <h1 className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+        Hi, I'm{" "}
+        <span className="text-red-600">
+          Developer
+        </span>
+      </h1>
 
-            <div className="flex items-center text-2xl md:text-4xl font-semibold mt-4">
-              <span>I am&nbsp;</span>
+      <div className="flex flex-wrap items-center mt-5 text-xl sm:text-2xl lg:text-4xl font-semibold">
+        <span>I am&nbsp;</span>
 
-              <ReactTyped
-                strings={[
-                  "Full Stack Developer",
-                  "MERN Stack Developer",
-                  "React Developer",
-                  "Programmer",
-                ]}
-                typeSpeed={60}
-                backSpeed={40}
-                loop
-                className="text-red-600"
-              />
-            </div>
+        <ReactTyped
+          strings={[
+            "Full Stack Developer",
+            "MERN Stack Developer",
+            "React Developer",
+            "Programmer",
+          ]}
+          typeSpeed={60}
+          backSpeed={40}
+          loop
+          className="text-red-600"
+        />
+      </div>
 
-            <p className="mt-6 text-gray-600 leading-8 text-justify">
-              Passionate Full Stack MERN Developer who loves building modern,
-              responsive and high-performance web applications with React,
-              Node.js, Express and MongoDB. I enjoy creating beautiful user
-              interfaces with smooth animations and optimized performance.
-            </p>
+      <p className="mt-6 text-gray-600 leading-7 text-sm sm:text-base lg:text-lg text-justify">
+        Passionate Full Stack MERN Developer who loves building
+        modern, responsive and high-performance web applications
+        with React, Node.js, Express and MongoDB. I enjoy creating
+        beautiful user interfaces with smooth animations and
+        optimized performance.
+      </p>
 
-            <div className="flex gap-5 mt-8">
-              <button className="px-7 py-3 rounded-xl bg-red-600 text-white hover:bg-red-700 duration-300 shadow-lg hover:scale-105">
-                Download CV
-              </button>
+      {/* Buttons */}
 
-              <button className="px-7 py-3 rounded-xl border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white duration-300">
-                Contact Me
-              </button>
-            </div>
+      <div className="mt-8 flex flex-col sm:flex-row gap-4">
 
-            {/* Social */}
+        <button className="w-full sm:w-auto px-7 py-3 rounded-xl bg-red-600 text-white hover:bg-red-700 duration-300 shadow-lg hover:scale-105">
+          Download CV
+        </button>
 
-            <div className="flex flex-col md:flex-row justify-between mt-12 gap-10">
+        <button className="w-full sm:w-auto px-7 py-3 rounded-xl border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white duration-300">
+          Contact Me
+        </button>
 
-              <div>
-                <h2 className="font-bold mb-4">
-                  Connect With Me
-                </h2>
+      </div>
 
-                <div className="flex gap-5">
-                  {socialLinks.map((item, index) => (
-                    <motion.a
-                      whileHover={{
-                        scale: 1.3,
-                        rotate: 10,
-                      }}
-                      whileTap={{ scale: 0.9 }}
-                      key={index}
-                      href={item.link}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-3xl hover:text-red-600 duration-300"
-                    >
-                      {item.icon}
-                    </motion.a>
-                  ))}
-                </div>
-              </div>
+      {/* Social + Skills */}
 
-              <div>
-                <h2 className="font-bold mb-4">
-                  Tech Stack
-                </h2>
+      <div className="mt-12 flex flex-col lg:flex-row justify-between gap-10">
 
-                <div className="flex gap-5">
-                  {skills.map((item, index) => (
-                    <motion.div
-                      key={index}
-                      whileHover={{
-                        y: -10,
-                        rotate: 8,
-                        scale: 1.2,
-                      }}
-                      className="text-4xl p-3 rounded-full border shadow-md hover:bg-red-600 hover:text-white duration-300 cursor-pointer"
-                    >
-                      {item}
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
+        <div>
+          <h2 className="font-bold mb-4 text-lg">
+            Connect With Me
+          </h2>
 
-            </div>
-          </motion.div>
+          <div className="flex flex-wrap gap-4">
 
-          {/* Right */}
+            {socialLinks.map((item, index) => (
+              <motion.a
+                key={index}
+                href={item.link}
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{
+                  scale: 1.2,
+                  rotate: 8,
+                }}
+                whileTap={{ scale: 0.9 }}
+                className="text-3xl hover:text-red-600 transition"
+              >
+                {item.icon}
+              </motion.a>
+            ))}
 
-          <motion.div
-            initial={{ opacity: 0, x: 80 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            className="flex justify-center"
-          >
-            <motion.img
-              src={pic}
-              loading="lazy"
-              alt="Developer"
-              animate={{
-                y: [0, -20, 0],
-              }}
-              transition={{
-                repeat: Infinity,
-                duration: 4,
-              }}
-              className="w-[300px] md:w-[470px] md:h-[600px] rounded-full border-8 border-red-100 shadow-[0_20px_80px_rgba(239,68,68,0.35)]"
-            />
-          </motion.div>
-
+          </div>
         </div>
-      </section>
 
+        <div>
+          <h2 className="font-bold mb-4 text-lg">
+            Tech Stack
+          </h2>
+
+          <div className="flex flex-wrap gap-4">
+
+            {skills.map((item, index) => (
+              <motion.div
+                key={index}
+                whileHover={{
+                  y: -8,
+                  scale: 1.15,
+                }}
+                className="text-3xl sm:text-4xl p-3 rounded-full border shadow-md hover:bg-red-600 hover:text-white transition cursor-pointer"
+              >
+                {item}
+              </motion.div>
+            ))}
+
+          </div>
+        </div>
+
+      </div>
+    </motion.div>
+
+    {/* Right Side */}
+
+    <motion.div
+      initial={{ opacity: 0, x: 80 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 1 }}
+      className="order-1 lg:order-2 flex justify-center"
+    >
+      <motion.img
+        src={pic}
+        alt="Developer"
+        loading="lazy"
+        animate={{
+          y: [0, -15, 0],
+        }}
+        transition={{
+          repeat: Infinity,
+          duration: 4,
+        }}
+        className="w-64 sm:w-72 md:w-80 lg:w-[450px] xl:w-[500px] rounded-full border-8 border-red-100 shadow-[0_20px_80px_rgba(239,68,68,0.35)] object-cover"
+      />
+    </motion.div>
+
+  </div>
+</section>
       <hr />
     </>
   );
