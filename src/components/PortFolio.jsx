@@ -17,36 +17,48 @@ function Portfolio() {
       logo: mongoDB,
       name: "MongoDB",
       desc: "NoSQL Database for modern web applications.",
+      github: "https://github.com/naveenkumawat2211-web",
+      live: "https://portfolio-eta-taupe-52.vercel.app/",
     },
     {
       id: 2,
       logo: express,
       name: "Express.js",
       desc: "Fast and lightweight backend framework.",
+      github: "https://github.com/naveenkumawat2211-web",
+      live: "https://portfolio-eta-taupe-52.vercel.app/",
     },
     {
       id: 3,
       logo: reactjs,
       name: "React.js",
       desc: "Frontend Library for interactive UI.",
+      github: "https://github.com/naveenkumawat2211-web",
+      live: "https://portfolio-eta-taupe-52.vercel.app/",
     },
     {
       id: 4,
       logo: nodejs,
       name: "Node.js",
       desc: "JavaScript runtime for backend.",
+      github: "https://github.com/naveenkumawat2211-web",
+      live: "https://portfolio-eta-taupe-52.vercel.app/",
     },
     {
       id: 5,
       logo: python,
       name: "Python",
       desc: "Powerful language for automation and AI.",
+      github: "https://github.com/naveenkumawat2211-web",
+      live: "https://portfolio-eta-taupe-52.vercel.app/",
     },
     {
       id: 6,
       logo: java,
       name: "Java",
       desc: "Object Oriented Programming Language.",
+      github: "https://github.com/naveenkumawat2211-web",
+      live: "https://portfolio-eta-taupe-52.vercel.app/",
     },
   ];
 
@@ -60,7 +72,7 @@ function Portfolio() {
       <motion.div
         initial={{ opacity: 0, y: -40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: .7 }}
+        transition={{ duration: 0.7 }}
         viewport={{ once: true }}
         className="text-center mb-16"
       >
@@ -82,13 +94,12 @@ function Portfolio() {
       {/* Cards */}
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-
         {cardItem.map((item, index) => (
           <motion.div
             key={item.id}
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * .15 }}
+            transition={{ delay: index * 0.15 }}
             viewport={{ once: true }}
             whileHover={{
               y: -10,
@@ -108,7 +119,6 @@ function Portfolio() {
             {/* Content */}
 
             <div className="p-6">
-
               <h2 className="text-2xl font-bold text-center">
                 {item.name}
               </h2>
@@ -120,23 +130,33 @@ function Portfolio() {
               {/* Buttons */}
 
               <div className="flex gap-4 mt-7">
+                {/* Live Button */}
 
-                <button className="flex-1 bg-red-600 text-white py-3 rounded-xl hover:bg-red-700 duration-300 flex justify-center items-center gap-2">
+                <a
+                  href={item.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 bg-red-600 text-white py-3 rounded-xl hover:bg-red-700 duration-300 flex justify-center items-center gap-2"
+                >
                   <FaExternalLinkAlt />
                   Live
-                </button>
+                </a>
 
-                <button className="flex-1 border-2 border-red-600 text-red-600 py-3 rounded-xl hover:bg-red-600 hover:text-white duration-300 flex justify-center items-center gap-2">
+                {/* GitHub Button */}
+
+                <a
+                  href={item.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 border-2 border-red-600 text-red-600 py-3 rounded-xl hover:bg-red-600 hover:text-white duration-300 flex justify-center items-center gap-2"
+                >
                   <FaGithub />
                   GitHub
-                </button>
-
+                </a>
               </div>
-
             </div>
           </motion.div>
         ))}
-
       </div>
     </section>
   );

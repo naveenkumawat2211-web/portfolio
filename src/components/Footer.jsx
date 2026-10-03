@@ -14,19 +14,23 @@ function Footer() {
   const socialLinks = [
     {
       icon: <FaFacebookF />,
-      url: "https://facebook.com",
+      url: "https://www.facebook.com/profile.php?id=100093429035972",
+      name: "Facebook",
     },
     {
       icon: <FaInstagram />,
-      url: "https://instagram.com",
+      url: "https://www.instagram.com/naveen_kumawat__07/",
+      name: "Instagram",
     },
     {
       icon: <FaLinkedinIn />,
-      url: "https://linkedin.com",
+      url: "https://www.linkedin.com/in/naveen-kumawat2211/",
+      name: "LinkedIn",
     },
     {
       icon: <FaGithub />,
-      url: "https://github.com",
+      url: "https://github.com/naveenkumawat2211-web",
+      name: "GitHub",
     },
   ];
 
@@ -39,11 +43,10 @@ function Footer() {
           <div className="grid md:grid-cols-3 gap-12">
 
             {/* Left */}
-
             <motion.div
               initial={{ opacity: 0, x: -60 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: .8 }}
+              transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
               <h1 className="text-4xl font-bold">
@@ -54,18 +57,17 @@ function Footer() {
               </h1>
 
               <p className="mt-6 text-gray-400 leading-8">
-                Passionate MERN Stack Developer creating beautiful,
-                responsive and modern web applications using the latest
+                Passionate Front-End Developer creating beautiful,
+                responsive and modern web applications using modern
                 technologies.
               </p>
             </motion.div>
 
             {/* Quick Links */}
-
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: .8 }}
+              transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
               <h2 className="text-2xl font-semibold mb-6">
@@ -98,11 +100,10 @@ function Footer() {
             </motion.div>
 
             {/* Contact */}
-
             <motion.div
               initial={{ opacity: 0, x: 60 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: .8 }}
+              transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
               <h2 className="text-2xl font-semibold mb-6">
@@ -116,13 +117,14 @@ function Footer() {
                     key={index}
                     href={item.url}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
+                    title={item.name}
                     whileHover={{
                       scale: 1.2,
                       rotate: 10,
                     }}
                     whileTap={{
-                      scale: .9,
+                      scale: 0.9,
                     }}
                     className="w-12 h-12 rounded-full bg-white/10 flex justify-center items-center hover:bg-red-600 duration-300"
                   >
@@ -132,13 +134,19 @@ function Footer() {
 
               </div>
 
-              <p className="mt-8 text-gray-400">
-                📧 naveenkumawat@gmail.com
-              </p>
+              <a
+                href="mailto:naveenkumawat2211@gmail.com"
+                className="block mt-8 text-gray-400 hover:text-red-500 transition"
+              >
+                📧 naveenkumawat2211@gmail.com
+              </a>
 
-              <p className="mt-2 text-gray-400">
-                📱 +91 75XXX X6371
-              </p>
+              <a
+                href="tel:+917597386371"
+                className="block mt-2 text-gray-400 hover:text-red-500 transition"
+              >
+                📱 +91 7597386371
+              </a>
 
               <p className="mt-2 text-gray-400">
                 📍 Rajasthan, India
@@ -149,11 +157,9 @@ function Footer() {
           </div>
 
           {/* Divider */}
-
           <div className="border-t border-gray-700 my-10"></div>
 
           {/* Bottom */}
-
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
 
             <p className="text-gray-400 text-center">
@@ -175,7 +181,6 @@ function Footer() {
       </footer>
 
       {/* Scroll To Top */}
-
       <motion.button
         onClick={() =>
           window.scrollTo({
@@ -191,9 +196,11 @@ function Footer() {
           scale: 0.9,
         }}
         className="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-full bg-red-600 text-white shadow-2xl flex items-center justify-center hover:bg-red-700 transition"
+        aria-label="Scroll to top"
       >
         <FaArrowUp size={20} />
       </motion.button>
+
     </>
   );
 }
