@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
+import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
-
 import {
   FaEnvelope,
   FaPhoneAlt,
@@ -25,197 +24,261 @@ function Contact() {
     setLoading(true);
 
     try {
-      await axios.post("https://getform.io/f/raeqjora", data);
+      await emailjs.send(
+        "service_vws18m5",
+        "template_wkkbqh1",
+        {
+          name: data.name,
+          email: data.email,
+          message: data.message,
+        },
+        {
+          publicKey: "3TWD5dtU7cnYwoY7H",
+        }
+      );
 
       toast.success("Message Sent Successfully ❤️");
-
       reset();
-    } catch (err) {
-      toast.error("Something went wrong");
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (
     <section
       name="Contact"
-      className="max-w-7xl mx-auto px-6 md:px-16 py-24"
+      id="contact"
+      className="w-full bg-white py-24"
     >
-      {/* Heading */}
+      <div className="max-w-7xl mx-auto px-6 md:px-16">
 
-      <motion.div
-        initial={{ opacity: 0, y: -40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: .8 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <p className="uppercase tracking-widest text-red-600 font-semibold">
-          Contact
-        </p>
-
-        <h1 className="text-4xl md:text-5xl font-bold mt-3">
-          Let's Work Together
-        </h1>
-
-        <div className="w-24 h-1 bg-red-600 mx-auto rounded-full mt-4"></div>
-
-        <p className="text-gray-500 mt-5">
-          Have a project in mind? Feel free to contact me.
-        </p>
-      </motion.div>
-
-      <div className="grid md:grid-cols-2 gap-12">
-
-        {/* Left */}
-
+        {/* Heading */}
         <motion.div
-          initial={{ opacity: 0, x: -70 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: .8 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold mb-8">
-            Contact Information
+          <p className="text-red-600 font-semibold text-lg">
+            Get In Touch
+          </p>
+
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-2">
+            Let's Work Together
           </h2>
 
-          <div className="space-y-8">
+          <div className="w-20 h-1 bg-red-600 mx-auto mt-4 rounded-full"></div>
 
-            <div className="flex gap-5 items-center">
-              <div className="w-14 h-14 rounded-full bg-red-100 flex items-center justify-center">
-                <FaEnvelope className="text-red-600 text-xl" />
-              </div>
-
-              <div>
-                <p className="font-semibold">Email</p>
-                <p className="text-gray-500">
-                 naveenkumawat2211@gmail.com
-                </p>
-              </div>
-            </div>
-
-            <div className="flex gap-5 items-center">
-              <div className="w-14 h-14 rounded-full bg-red-100 flex items-center justify-center">
-                <FaPhoneAlt className="text-red-600 text-xl" />
-              </div>
-
-              <div>
-                <p className="font-semibold">Phone</p>
-                <p className="text-gray-500">
-                  +91 7597386371
-                </p>
-              </div>
-            </div>
-
-            <div className="flex gap-5 items-center">
-              <div className="w-14 h-14 rounded-full bg-red-100 flex items-center justify-center">
-                <FaMapMarkerAlt className="text-red-600 text-xl" />
-              </div>
-
-              <div>
-                <p className="font-semibold">Location</p>
-                <p className="text-gray-500">
-                  Jaipur, Rajasthan
-                </p>
-              </div>
-            </div>
-
-          </div>
+          <p className="text-gray-600 mt-5 max-w-2xl mx-auto">
+            Have a project in mind or want to discuss an opportunity?
+            Feel free to send me a message.
+          </p>
         </motion.div>
 
-        {/* Right */}
+        <div className="grid md:grid-cols-2 gap-12 items-start">
 
-        <motion.form
-          initial={{ opacity: 0, x: 70 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: .8 }}
-          viewport={{ once: true }}
-          onSubmit={handleSubmit(onSubmit)}
-          className="bg-white shadow-2xl rounded-3xl p-8 border"
-        >
+          {/* Left Side */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-3xl font-bold text-gray-900 mb-6">
+              Contact Me
+            </h3>
 
-          <div className="space-y-6">
+            <p className="text-gray-600 leading-7 mb-8">
+              I'm always open to discussing new projects, creative ideas,
+              or opportunities to be part of your vision.
+            </p>
 
-            <div>
+            <div className="space-y-6">
 
-              <label className="font-semibold">
-                Full Name
-              </label>
+              {/* Email */}
+              <a
+                href="mailto:naveenkumawat2211@gmail.com"
+                className="flex items-center gap-5 group"
+              >
+                <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-red-100 text-red-600 text-xl group-hover:bg-red-600 group-hover:text-white transition duration-300">
+                  <FaEnvelope />
+                </div>
 
-              <input
-                {...register("name", {
-                  required: "Name is required",
-                })}
-                placeholder="Enter your name"
-                className="w-full mt-2 border rounded-xl p-4 outline-none focus:border-red-500"
-              />
+                <div>
+                  <p className="text-sm text-gray-500">
+                    Email
+                  </p>
 
-              <p className="text-red-500 text-sm">
-                {errors.name?.message}
-              </p>
+                  <p className="font-semibold text-gray-800 group-hover:text-red-600 transition">
+                    naveenkumawat2211@gmail.com
+                  </p>
+                </div>
+              </a>
+
+              {/* Phone */}
+              <a
+                href="tel:+917597386371"
+                className="flex items-center gap-5 group"
+              >
+                <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-red-100 text-red-600 text-xl group-hover:bg-red-600 group-hover:text-white transition duration-300">
+                  <FaPhoneAlt />
+                </div>
+
+                <div>
+                  <p className="text-sm text-gray-500">
+                    Phone
+                  </p>
+
+                  <p className="font-semibold text-gray-800 group-hover:text-red-600 transition">
+                    +91 7597386371
+                  </p>
+                </div>
+              </a>
+
+              {/* Location */}
+              <div className="flex items-center gap-5">
+                <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-red-100 text-red-600 text-xl">
+                  <FaMapMarkerAlt />
+                </div>
+
+                <div>
+                  <p className="text-sm text-gray-500">
+                    Location
+                  </p>
+
+                  <p className="font-semibold text-gray-800">
+                    Jaipur, Rajasthan, India
+                  </p>
+                </div>
+              </div>
 
             </div>
+          </motion.div>
 
-            <div>
+          {/* Right Side - Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="bg-gray-50 p-6 md:p-8 rounded-2xl shadow-lg"
+          >
+            <form onSubmit={handleSubmit(onSubmit)}>
 
-              <label className="font-semibold">
-                Email
-              </label>
+              {/* Name */}
+              <div className="mb-5">
+                <label className="block text-gray-700 font-semibold mb-2">
+                  Full Name
+                </label>
 
-              <input
-                {...register("email", {
-                  required: "Email is required",
-                })}
-                placeholder="Enter your email"
-                className="w-full mt-2 border rounded-xl p-4 outline-none focus:border-red-500"
-              />
+                <input
+                  type="text"
+                  placeholder="Enter your name"
+                  {...register("name", {
+                    required: "Name is required",
+                  })}
+                  className={`w-full px-4 py-3 rounded-xl border ${
+                    errors.name
+                      ? "border-red-500"
+                      : "border-gray-300"
+                  } focus:outline-none focus:ring-2 focus:ring-red-500 bg-white`}
+                />
 
-              <p className="text-red-500 text-sm">
-                {errors.email?.message}
-              </p>
+                {errors.name && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.name.message}
+                  </p>
+                )}
+              </div>
 
-            </div>
+              {/* Email */}
+              <div className="mb-5">
+                <label className="block text-gray-700 font-semibold mb-2">
+                  Email Address
+                </label>
 
-            <div>
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value:
+                        /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: "Enter a valid email address",
+                    },
+                  })}
+                  className={`w-full px-4 py-3 rounded-xl border ${
+                    errors.email
+                      ? "border-red-500"
+                      : "border-gray-300"
+                  } focus:outline-none focus:ring-2 focus:ring-red-500 bg-white`}
+                />
 
-              <label className="font-semibold">
-                Message
-              </label>
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.email.message}
+                  </p>
+                )}
+              </div>
 
-              <textarea
-                rows="6"
-                {...register("message", {
-                  required: "Message is required",
-                })}
-                placeholder="Write your message..."
-                className="w-full mt-2 border rounded-xl p-4 outline-none focus:border-red-500"
-              />
+              {/* Message */}
+              <div className="mb-6">
+                <label className="block text-gray-700 font-semibold mb-2">
+                  Message
+                </label>
 
-              <p className="text-red-500 text-sm">
-                {errors.message?.message}
-              </p>
+                <textarea
+                  rows="6"
+                  placeholder="Write your message..."
+                  {...register("message", {
+                    required: "Message is required",
+                  })}
+                  className={`w-full px-4 py-3 rounded-xl border ${
+                    errors.message
+                      ? "border-red-500"
+                      : "border-gray-300"
+                  } focus:outline-none focus:ring-2 focus:ring-red-500 bg-white resize-none`}
+                ></textarea>
 
-            </div>
+                {errors.message && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.message.message}
+                  </p>
+                )}
+              </div>
 
-            <button
-              disabled={loading}
-              className="w-full bg-gradient-to-r from-red-600 to-pink-600 text-white py-4 rounded-xl hover:scale-[1.02] duration-300 flex justify-center items-center gap-3"
-            >
-              {loading ? (
-                "Sending..."
-              ) : (
-                <>
-                  <FaPaperPlane />
-                  Send Message
-                </>
-              )}
-            </button>
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={loading}
+                className={`w-full flex items-center justify-center gap-3 py-3.5 rounded-xl text-white font-semibold transition duration-300 ${
+                  loading
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-red-600 hover:bg-red-700 hover:scale-[1.02]"
+                }`}
+              >
+                {loading ? (
+                  <>
+                    <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <FaPaperPlane />
+                    Send Message
+                  </>
+                )}
+              </button>
 
-          </div>
+            </form>
+          </motion.div>
 
-        </motion.form>
-
+        </div>
       </div>
     </section>
   );
